@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.index');
 });
+
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
+    //Dashboard
+    // Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
+    return view('admin.index');
+    // Route::get('/dashboard/lastestgetdatatables', 'Admin\DashboardController@lastestgetdatatables')->name('admin.dashboard.lastestgetdatatables');
+});
+
+
